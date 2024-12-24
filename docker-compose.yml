@@ -1,0 +1,26 @@
+---
+version: '3'
+services:
+  nsqlookupd:
+    image: nsqio/nsq
+    command: /nsqlookupd
+    ports:
+      - "4160:4160"    # Map container port 4160 to host port 4160
+      - "4161:4161"    # Map container port 4161 to host port 4161
+
+  nsqd:
+    image: nsqio/nsq
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4150:4150"    # Map container port 4150 to host port 4150
+      - "4151:4151"    # Map container port 4151 to host port 4151
+
+  nsqadmin:
+    image: nsqio/nsq
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    depends_on:
+      - nsqlookupd
+    ports:
+      - "4171:4171"    # Map container port 4171 to host port 4171
