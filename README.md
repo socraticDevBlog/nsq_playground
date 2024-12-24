@@ -1,11 +1,9 @@
 # nsq v1.3.0
 
-
-
 ## Provision local nsq cluster using Docker compose
 
 
-````bash
+```bash
 docker compose up -d
 ```
 
@@ -13,7 +11,6 @@ create a 'test' topic
 
 ```bash
 curl -d 'hello world 1' 'http://127.0.0.1:4151/pub?topic=test'
-
 ```
 
 ## Run a Python client as a 'test' topic listener
@@ -42,8 +39,7 @@ you'll see the messages get printed in the python script's shell
 
 ## admin panel
 
-``http://localhost:4171`
-
+[http://localhost:417](http://localhost:4171)
 
 ## sources
 
